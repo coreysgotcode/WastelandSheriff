@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cqm4epj2saf3l" path="res://squake.tscn" id="3_61ymo"]
 size = Vector2(1200, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhat6"]
+size = Vector2(1200, 20)
+
 [sub_resource type="BoxMesh" id="BoxMesh_loh6t"]
 size = Vector3(1200, 20, 1)
 
@@ -19,6 +22,9 @@ position = Vector2(45, -67)
 position = Vector2(573, 448)
 
 [node name="Squake" parent="." instance=ExtResource("3_61ymo")]
+collision_layer = 2
+collision_mask = 0
+[node name="Ground" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 0
 
