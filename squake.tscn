@@ -146,7 +146,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6wti0"]
 
-[node name="squake" type="RigidBody2D"]
+[node name="Squake" type="RigidBody2D"]
 collision_mask = 0
 script = ExtResource("1_y5ea2")
 metadata/_edit_group_ = true
@@ -155,7 +155,7 @@ metadata/_edit_group_ = true
 position = Vector2(8, 0)
 sprite_frames = SubResource("SpriteFrames_txo1d")
 animation = &"crawl"
-frame_progress = 0.25323
+frame_progress = 0.760592
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

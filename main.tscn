@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_atk60"]
 [ext_resource type="PackedScene" uid="uid://b73uuol68nx8a" path="res://sheriff.tscn" id="1_xxw6w"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhat6"]
+[ext_resource type="PackedScene" uid="uid://cqm4epj2saf3l" path="res://squake.tscn" id="3_61ymo"]
 size = Vector2(1200, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_loh6t"]
@@ -18,7 +18,7 @@ position = Vector2(45, -67)
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(573, 448)
 
-[node name="Ground" type="StaticBody2D" parent="."]
+[node name="Squake" parent="." instance=ExtResource("3_61ymo")]
 collision_layer = 2
 collision_mask = 0
 
