@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm6vvvd70oawy"]
+[gd_scene load_steps=7 format=3 uid="uid://cm6vvvd70oawy"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_atk60"]
 [ext_resource type="PackedScene" uid="uid://b73uuol68nx8a" path="res://sheriff.tscn" id="1_xxw6w"]
+[ext_resource type="PackedScene" uid="uid://cqm4epj2saf3l" path="res://squake.tscn" id="3_wu5ok"]
 
 [ext_resource type="PackedScene" uid="uid://cqm4epj2saf3l" path="res://squake.tscn" id="3_61ymo"]
 size = Vector2(1200, 20)
@@ -12,8 +13,19 @@ size = Vector2(1200, 20)
 [sub_resource type="BoxMesh" id="BoxMesh_loh6t"]
 size = Vector3(1200, 20, 1)
 
+[sub_resource type="Curve2D" id="Curve2D_6h1gl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1200, 672, 0, 0, 0, 0, 0, 680, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 1208, -8, 0, 0, 0, 0, 1200, 672)
+}
+point_count = 5
+
 [node name="Main" type="Node"]
 script = ExtResource("1_atk60")
+squake_scene = ExtResource("3_wu5ok")
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [node name="Sheriff" parent="." instance=ExtResource("1_xxw6w")]
 position = Vector2(45, -67)
@@ -36,3 +48,19 @@ shape = SubResource("RectangleShape2D_nhat6")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Ground"]
 position = Vector2(600, 680)
 mesh = SubResource("BoxMesh_loh6t")
+
+[node name="Squake" parent="." instance=ExtResource("3_wu5ok")]
+
+[node name="SquakeTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="SquakeStartPosition" type="Marker2D" parent="."]
+
+[node name="SquakePath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_6h1gl")
+
+[node name="SquakeSpawnLocation" type="PathFollow2D" parent="SquakePath"]
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="hit" from="Squake" to="." method="_on_squake_hit"]
+[connection signal="timeout" from="SquakeTimer" to="." method="_on_squake_timer_timeout"]
