@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm6vvvd70oawy"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_atk60"]
+[ext_resource type="PackedScene" uid="uid://b73uuol68nx8a" path="res://sheriff.tscn" id="1_xxw6w"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_atk60")
+
+[node name="Sheriff" parent="." instance=ExtResource("1_xxw6w")]
+position = Vector2(45, -67)
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(573, 448)

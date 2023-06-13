@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2dxqqe0ls3a8"
-path="res://.godot/imported/enemyWalking_1.png-5af6eedbe61b701677d490ffdc1e6471.ctex"
+uid="uid://bwckjd4xd7nff"
+path="res://.godot/imported/sheriff_right_armed.png-d010f8d88e11563cfe875c04adc0a8f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemyWalking_1.png"
-dest_files=["res://.godot/imported/enemyWalking_1.png-5af6eedbe61b701677d490ffdc1e6471.ctex"]
+source_file="res://art/sheriff/sheriff_right_armed.png"
+dest_files=["res://.godot/imported/sheriff_right_armed.png-d010f8d88e11563cfe875c04adc0a8f7.ctex"]
 
 [params]
 
