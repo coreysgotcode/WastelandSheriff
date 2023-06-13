@@ -75,10 +75,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nd08"]
-size = Vector2(24, 64)
+size = Vector2(28, 112)
 
-[node name="Sheriff" type="Area2D"]
+[node name="Sheriff" type="CharacterBody2D"]
 position = Vector2(576, 336)
+collision_mask = 2
 script = ExtResource("1_i6j6h")
 metadata/_edit_group_ = true
 
@@ -87,5 +88,5 @@ sprite_frames = SubResource("SpriteFrames_mu8yt")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(2, 8)
 shape = SubResource("RectangleShape2D_4nd08")
