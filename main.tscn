@@ -12,6 +12,7 @@ size = Vector3(1200, 20, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_atk60")
+bullet_scene = ExtResource("3_1h6dw")
 
 [node name="Sheriff" parent="." instance=ExtResource("1_xxw6w")]
 position = Vector2(45, -67)
@@ -34,3 +35,5 @@ shape = SubResource("RectangleShape2D_nhat6")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Ground"]
 position = Vector2(600, 680)
 mesh = SubResource("BoxMesh_loh6t")
+
+[connection signal="child_exiting_tree" from="Bullet" to="." method="_on_bullet_child_exiting_tree"]
