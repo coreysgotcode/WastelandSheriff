@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://4hk4062ki33n" path="res://bullet.tscn" id="3_1h6dw"]
 [ext_resource type="PackedScene" path="res://squake.tscn" id="3_wu5ok"]
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhat6"]
 size = Vector2(1200, 20)
 
@@ -25,7 +26,6 @@ squake_scene = ExtResource("3_wu5ok")
 wait_time = 2.0
 one_shot = true
 bullet_scene = ExtResource("3_1h6dw")
-
 
 [node name="Sheriff" parent="." instance=ExtResource("1_xxw6w")]
 position = Vector2(45, -67)
