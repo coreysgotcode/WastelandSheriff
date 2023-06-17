@@ -24,6 +24,8 @@ squake_scene = ExtResource("3_wu5ok")
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+bullet_scene = ExtResource("3_1h6dw")
+
 
 [node name="Sheriff" parent="." instance=ExtResource("1_xxw6w")]
 position = Vector2(45, -67)
@@ -66,3 +68,4 @@ rotation = 3.13493
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="hit" from="Squake" to="." method="_on_squake_hit"]
 [connection signal="timeout" from="SquakeTimer" to="." method="_on_squake_timer_timeout"]
+[connection signal="child_exiting_tree" from="Bullet" to="." method="_on_bullet_child_exiting_tree"]

@@ -1,18 +1,16 @@
 extends Node
 
 @export var squake_scene: PackedScene
+@export var bullet_scene: PackedScene
 var score
 var live_squake_limit = 5
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-<<<<<<< HEAD
 	new_game()
-=======
 	$Sheriff.start($StartPosition.position)
-	$Bullet.start($StartPosition.position)
 
->>>>>>> 14b807d (Working Bullet Fire and Bound)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -49,3 +47,11 @@ func game_over():
 func new_game():
 	score = 0
 	$Sheriff.start($StartPosition.position)
+
+func _input(event):
+	if event.is_action_pressed("click"):
+		var bullet = bullet_scene.instantiate()
+		bullet.position = $Sheriff.position
+		add_child(bullet)
+		bullet.fire_bullet(event.position)
+

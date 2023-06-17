@@ -30,3 +30,5 @@ animation = &"bullet"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_4nd08")
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
