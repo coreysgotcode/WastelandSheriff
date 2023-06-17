@@ -1,10 +1,7 @@
 extends CharacterBody2D
 
-
 @export var speed = 400
 var direction = Vector2.ZERO
-var target = position
-
 
 func fire_bullet(event_position):
 	direction = (event_position - global_position).normalized()
