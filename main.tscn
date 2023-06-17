@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cm6vvvd70oawy"]
+[gd_scene load_steps=8 format=3 uid="uid://cx0yde7yor36c"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_atk60"]
 [ext_resource type="PackedScene" uid="uid://b73uuol68nx8a" path="res://sheriff.tscn" id="1_xxw6w"]
-[ext_resource type="PackedScene" uid="uid://cqm4epj2saf3l" path="res://squake.tscn" id="3_wu5ok"]
+[ext_resource type="PackedScene" uid="uid://4hk4062ki33n" path="res://bullet.tscn" id="3_1h6dw"]
+[ext_resource type="PackedScene" path="res://squake.tscn" id="3_wu5ok"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhat6"]
 size = Vector2(1200, 20)
@@ -23,9 +25,13 @@ squake_scene = ExtResource("3_wu5ok")
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+bullet_scene = ExtResource("3_1h6dw")
 
 [node name="Sheriff" parent="." instance=ExtResource("1_xxw6w")]
 position = Vector2(45, -67)
+
+[node name="Bullet" parent="." instance=ExtResource("3_1h6dw")]
+position = Vector2(96, -7)
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(573, 448)
@@ -54,7 +60,12 @@ wait_time = 0.5
 curve = SubResource("Curve2D_6h1gl")
 
 [node name="SquakeSpawnLocation" type="PathFollow2D" parent="SquakePath"]
+position = Vector2(1200, 672)
+rotation = 3.13493
+
+[node name="Bullet" parent="." instance=ExtResource("3_1h6dw")]
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="hit" from="Squake" to="." method="_on_squake_hit"]
 [connection signal="timeout" from="SquakeTimer" to="." method="_on_squake_timer_timeout"]
+[connection signal="child_exiting_tree" from="Bullet" to="." method="_on_bullet_child_exiting_tree"]
