@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://4hk4062ki33n"]
+[gd_scene load_steps=5 format=3 uid="uid://bqeolm0fbcrxd"]
 
 [ext_resource type="Script" path="res://bullet.gd" id="1_nvrfj"]
 [ext_resource type="Texture2D" uid="uid://djyug4kcs8m0i" path="res://art/bullet/bullet.png" id="2_jfnk0"]
@@ -19,7 +19,7 @@ size = Vector2(16, 8)
 
 [node name="Bullet" type="CharacterBody2D"]
 position = Vector2(605, 356)
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_nvrfj")
 metadata/_edit_group_ = true
 

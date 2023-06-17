@@ -4,6 +4,7 @@ extends Node
 @export var bullet_scene: PackedScene
 var score
 var live_squake_limit = 5
+var current_squake_count = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,23 +18,26 @@ func _process(delta):
 func _on_squake_hit():
 	score += 1
 	
+	
 func _on_squake_timer_timeout():
-	var squake = squake_scene.instantiate()
-	
-	var squake_spawn_location = get_node( "SquakePath/SquakeSpawnLocation" )
-	squake_spawn_location.progress_ratio = randf()
-	
-	var direction = squake_spawn_location.rotation + PI/2
-	
-	squake.position = squake_spawn_location.position
-	
-	direction += randf_range(-PI/4, PI/4)
-	squake.rotation = direction
-	
-	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
-	squake.linear_velocity = velocity.rotated(direction)
-	
-	add_child(squake)
+	if current_squake_count <= live_squake_limit:
+		var squake = squake_scene.instantiate()
+		
+		var squake_spawn_location = get_node( "SquakePath/SquakeSpawnLocation" )
+		squake_spawn_location.progress_ratio = randf()
+		
+		var direction = squake_spawn_location.rotation + PI/2
+		
+		squake.position = squake_spawn_location.position
+		
+		direction += randf_range(-PI/4, PI/4)
+		squake.rotation = direction
+		
+		var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
+		squake.linear_velocity = velocity.rotated(direction)
+		
+		add_child(squake)
+		current_squake_count += 1
 
 func _on_start_timer_timeout():
 	pass # Replace with function body.
@@ -52,3 +56,8 @@ func _input(event):
 		bullet.position = $Sheriff.position
 		add_child(bullet)
 		bullet.fire_bullet(event.position)
+
+func _on_squake_leaving():
+	if current_squake_count > 0:
+		current_squake_count -= 1 # Replace with function body.
+
