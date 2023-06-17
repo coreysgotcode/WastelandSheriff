@@ -16,6 +16,9 @@ script = ExtResource("1_atk60")
 [node name="Sheriff" parent="." instance=ExtResource("1_xxw6w")]
 position = Vector2(45, -67)
 
+[node name="Bullet" parent="." instance=ExtResource("3_1h6dw")]
+position = Vector2(96, -7)
+
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(573, 448)
 
@@ -31,5 +34,3 @@ shape = SubResource("RectangleShape2D_nhat6")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Ground"]
 position = Vector2(600, 680)
 mesh = SubResource("BoxMesh_loh6t")
-
-[node name="Bullet" parent="." instance=ExtResource("3_1h6dw")]
