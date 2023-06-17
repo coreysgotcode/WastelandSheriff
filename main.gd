@@ -20,7 +20,7 @@ func _on_squake_hit():
 func _on_squake_timer_timeout():
 	var squake = squake_scene.instantiate()
 	
-	var squake_spawn_location = get_node("SquakePath/SquakeSpawnLocation")
+	var squake_spawn_location = get_node( "SquakePath/SquakeSpawnLocation" )
 	squake_spawn_location.progress_ratio = randf()
 	
 	var direction = squake_spawn_location.rotation + PI/2
@@ -43,7 +43,8 @@ func game_over():
 	
 func new_game():
 	score = 0
-	$Sheriff.start($StartPosition.position)
+	$Sheriff.start( $StartPosition.position )
+	$SquakeTimer.start()
 
 func _input(event):
 	if event.is_action_pressed("click"):

@@ -17,6 +17,11 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 
 func _on_body_entered(body):
-	hide()
+	#hide()
 	hit.emit()
-	$CollisionShape2D.set_deferred("disabled", true)
+	#$CollisionShape2D.set_deferred("disabled", true)
+
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false
