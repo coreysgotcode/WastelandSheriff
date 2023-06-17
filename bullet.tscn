@@ -1,92 +1,32 @@
-[gd_scene load_steps=14 format=3 uid="uid://4hk4062ki33n"]
+[gd_scene load_steps=5 format=3 uid="uid://4hk4062ki33n"]
 
 [ext_resource type="Script" path="res://bullet.gd" id="1_nvrfj"]
-[ext_resource type="Texture2D" uid="uid://bwckjd4xd7nff" path="res://art/sheriff/sheriff_right_armed.png" id="2_ac74p"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sipqy"]
-atlas = ExtResource("2_ac74p")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_12cgb"]
-atlas = ExtResource("2_ac74p")
-region = Rect2(256, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5wss2"]
-atlas = ExtResource("2_ac74p")
-region = Rect2(512, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n38oc"]
-atlas = ExtResource("2_ac74p")
-region = Rect2(0, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wbyrs"]
-atlas = ExtResource("2_ac74p")
-region = Rect2(256, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wg51w"]
-atlas = ExtResource("2_ac74p")
-region = Rect2(512, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kgtxf"]
-atlas = ExtResource("2_ac74p")
-region = Rect2(0, 512, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dxea1"]
-atlas = ExtResource("2_ac74p")
-region = Rect2(256, 512, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m5ao3"]
-atlas = ExtResource("2_ac74p")
-region = Rect2(512, 512, 256, 256)
+[ext_resource type="Texture2D" uid="uid://djyug4kcs8m0i" path="res://art/bullet/bullet.png" id="2_jfnk0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mu8yt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sipqy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_12cgb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5wss2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n38oc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wbyrs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wg51w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kgtxf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dxea1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m5ao3")
+"texture": ExtResource("2_jfnk0")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"bullet",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nd08"]
-size = Vector2(28, 112)
+size = Vector2(16, 8)
 
 [node name="Bullet" type="CharacterBody2D"]
-position = Vector2(576, 336)
+position = Vector2(605, 356)
 collision_mask = 2
 script = ExtResource("1_nvrfj")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mu8yt")
-animation = &"walk"
+animation = &"bullet"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 8)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_4nd08")

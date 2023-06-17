@@ -28,6 +28,9 @@ one_shot = true
 [node name="Sheriff" parent="." instance=ExtResource("1_xxw6w")]
 position = Vector2(45, -67)
 
+[node name="Bullet" parent="." instance=ExtResource("3_1h6dw")]
+position = Vector2(96, -7)
+
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(573, 448)
 

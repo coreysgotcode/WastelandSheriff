@@ -6,7 +6,13 @@ var live_squake_limit = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+<<<<<<< HEAD
 	new_game()
+=======
+	$Sheriff.start($StartPosition.position)
+	$Bullet.start($StartPosition.position)
+
+>>>>>>> 14b807d (Working Bullet Fire and Bound)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
