@@ -46,7 +46,6 @@ position = Vector2(600, 680)
 mesh = SubResource("BoxMesh_loh6t")
 
 [node name="Squake" parent="." instance=ExtResource("3_wu5ok")]
-collision_mask = 3
 contact_monitor = true
 
 [node name="SquakeTimer" type="Timer" parent="."]
@@ -64,6 +63,7 @@ rotation = -3.03187
 
 [node name="Bullet" parent="." instance=ExtResource("3_1h6dw")]
 visible = false
+collision_mask = 6
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="hit" from="Squake" to="." method="_on_squake_hit"]
