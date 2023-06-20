@@ -16,5 +16,11 @@ func _physics_process(delta):
 	var collision_info = move_and_collide(direction * speed * delta)
 	if collision_info:
 		direction = direction.bounce(collision_info.get_normal())
+	
+		var collider = collision_info.get_collider()
+		if collider.has_method("damage"):
+			collider.damage(self)
+			queue_free()
+
 
 

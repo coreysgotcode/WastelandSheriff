@@ -21,7 +21,6 @@ size = Vector2(16, 8)
 position = Vector2(605, 356)
 collision_mask = 6
 script = ExtResource("1_nvrfj")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mu8yt")
@@ -30,5 +29,3 @@ animation = &"bullet"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_4nd08")
-
-[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
