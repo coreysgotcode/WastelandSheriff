@@ -21,6 +21,3 @@ func _physics_process(delta):
 		if collider.has_method("damage"):
 			collider.damage(self)
 			queue_free()
-
-
-
