@@ -18,8 +18,9 @@ func _physics_process(delta):
 		direction = direction.bounce(collision_info.get_normal())
 	
 		var collider = collision_info.get_collider()
-		if collider.get("count"):
-			print(collider.count)
+		if collider.has_method("damage"):
+			collider.damage()
+			queue_free()
 
 
 
