@@ -11,10 +11,9 @@ func _process(delta):
 	pass
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	print("Leaving")
 	queue_free()
 	
-func damage():
-	print("Ouch")
+func damage(damage_object):
+	print(damage_object)
 	queue_free()
 

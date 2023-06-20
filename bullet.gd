@@ -19,7 +19,7 @@ func _physics_process(delta):
 	
 		var collider = collision_info.get_collider()
 		if collider.has_method("damage"):
-			collider.damage()
+			collider.damage(self)
 			queue_free()
 
 
