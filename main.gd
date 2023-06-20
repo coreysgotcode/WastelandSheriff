@@ -16,8 +16,8 @@ func _process(delta):
 
 # For every squake killed we add a point to the score
 func _on_squake_hit():
+	print("Squake Hit")
 	score += 1
-	
 	
 func _on_squake_timer_timeout():
 	if current_squake_count <= live_squake_limit:
@@ -29,6 +29,7 @@ func _on_squake_timer_timeout():
 		var direction = squake_spawn_location.rotation + PI/2
 		
 		squake.position = squake_spawn_location.position
+		squake.count = current_squake_count
 		
 		direction += randf_range(-PI/4, PI/4)
 		squake.rotation = direction

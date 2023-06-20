@@ -13,9 +13,9 @@ size = Vector3(1200, 20, 1)
 
 [sub_resource type="Curve2D" id="Curve2D_6h1gl"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1120, 632, 0, 0, 0, 0, 176, 528, 0, 0, 0, 0, 392, 264, 0, 0, 0, 0, 1056, 208, 0, 0, 0, 0, 1192, 416)
+"points": PackedVector2Array(0, 0, 0, 0, 1368.33, 65.0893, 0, 0, 0, 0, 70.9666, 61.0213)
 }
-point_count = 5
+point_count = 2
 
 [node name="Main" type="Node"]
 script = ExtResource("1_atk60")
@@ -54,18 +54,16 @@ wait_time = 0.5
 [node name="SquakeStartPosition" type="Marker2D" parent="."]
 
 [node name="SquakePath" type="Path2D" parent="."]
-position = Vector2(-72, -32)
+position = Vector2(-33.687, -33)
+scale = Vector2(0.88333, 0.983264)
 curve = SubResource("Curve2D_6h1gl")
 
 [node name="SquakeSpawnLocation" type="PathFollow2D" parent="SquakePath"]
-position = Vector2(1120, 632)
-rotation = -3.03187
+position = Vector2(1368.33, 65.0893)
+rotation = -3.13846
 
 [node name="Bullet" parent="." instance=ExtResource("3_1h6dw")]
 visible = false
-collision_mask = 6
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
-[connection signal="hit" from="Squake" to="." method="_on_squake_hit"]
-[connection signal="leaving" from="Squake" to="." method="_on_squake_leaving"]
 [connection signal="timeout" from="SquakeTimer" to="." method="_on_squake_timer_timeout"]
