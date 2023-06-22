@@ -45,10 +45,13 @@ func _on_start_timer_timeout():
 
 func game_over():
 	$SquakeTimer.stop()
+
 	
 func new_game():
 	score = 0
 	$Sheriff.start( $StartPosition.position )
+	$Arm.start( $StartPosition.position )
+
 	$SquakeTimer.start()
 
 func _input(event):
