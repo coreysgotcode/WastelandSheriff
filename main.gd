@@ -50,8 +50,6 @@ func game_over():
 func new_game():
 	score = 0
 	$Sheriff.start( $StartPosition.position )
-	$Arm.start( $StartPosition.position )
-
 	$SquakeTimer.start()
 
 func _input(event):

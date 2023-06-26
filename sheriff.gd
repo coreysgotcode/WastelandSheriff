@@ -10,6 +10,8 @@ var screen_size # Size of the game window.
 var jump_pressed = false
 var target_velocity = Vector2.ZERO
 
+var prev_direction = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -75,6 +77,7 @@ func _process(delta):
 		
 		var is_turning = velocity.x < 0
 		$AnimatedSprite2D.flip_h = is_turning
+		$Arm.flip_arm(velocity.x < 0)		
 		
 	move_and_slide()
 

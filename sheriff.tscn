@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://b73uuol68nx8a"]
+[gd_scene load_steps=15 format=3 uid="uid://b73uuol68nx8a"]
 
-[ext_resource type="Texture2D" uid="uid://ct5f8k85n15n3" path="res://art/sheriff/sheriff_right_armless.png" id="1_uo20e"]
+[ext_resource type="Texture2D" path="res://art/sheriff/sheriff_right_armless.png" id="1_uo20e"]
+[ext_resource type="PackedScene" uid="uid://davenr5c2y52d" path="res://arm.tscn" id="2_jg85s"]
 
 [sub_resource type="GDScript" id="GDScript_alp3q"]
 script/source = "extends CharacterBody2D
@@ -13,6 +14,7 @@ var screen_size # Size of the game window.
 # The player's movement vector.
 var jump_pressed = false
 var target_velocity = Vector2.ZERO
+var prev_direction = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -77,8 +79,12 @@ func _process(delta):
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = \"walk\"
 		$AnimatedSprite2D.flip_v = false
-		# See the note below about boolean assignment.
+		
+		var is_flipped = velocity.x < 0
 		$AnimatedSprite2D.flip_h = velocity.x < 0
+		if is_flipped != prev_direction:
+			$Arm.flip_arm(is_flipped)
+			prev_direction = is_flipped
 		
 		
 	move_and_slide()
@@ -178,3 +184,8 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 15.5)
 shape = SubResource("RectangleShape2D_4nd08")
 metadata/_edit_lock_ = true
+
+[node name="Arm" parent="." instance=ExtResource("2_jg85s")]
+position = Vector2(72, -16)
+collision_mask = 0
+motion_mode = 1

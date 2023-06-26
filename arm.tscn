@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cihv6qu8hwkjl"]
+[gd_scene load_steps=5 format=3 uid="uid://davenr5c2y52d"]
 
 [ext_resource type="Script" path="res://arm.gd" id="1_744kg"]
-[ext_resource type="Texture2D" uid="uid://c7087te7sh0p5" path="res://art/sheriff/sheriff_arm.png" id="1_lpa37"]
+[ext_resource type="Texture2D" path="res://art/sheriff/sheriff_arm.png" id="1_lpa37"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sok1h"]
 animations = [{
