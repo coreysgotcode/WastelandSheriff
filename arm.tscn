@@ -19,12 +19,12 @@ size = Vector2(56, 16)
 
 [node name="Arm" type="CharacterBody2D"]
 script = ExtResource("1_744kg")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sok1h")
 animation = &"aim"
+offset = Vector2(40, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-12, 8)
+position = Vector2(28, 16)
 shape = SubResource("RectangleShape2D_tiv7n")

@@ -20,6 +20,13 @@ var prev_direction = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	
+	
+func get_gun_position():
+	return $Arm.get_gun_position()
+	
+func get_gun_rotation():
+	return $Arm.get_gun_rotation()
 
 func get_input(velocity: Vector2):
 	'''
@@ -186,6 +193,6 @@ shape = SubResource("RectangleShape2D_4nd08")
 metadata/_edit_lock_ = true
 
 [node name="Arm" parent="." instance=ExtResource("2_jg85s")]
-position = Vector2(72, -16)
+position = Vector2(32, -24)
 collision_mask = 0
 motion_mode = 1
