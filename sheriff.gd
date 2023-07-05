@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 @export var speed = 400 # How fast the player will move (pixels/sec).
 @export var fall_acceleration = 400
 @export var jump_impulse = -400
@@ -9,6 +10,7 @@ var screen_size # Size of the game window.
 var jump_pressed = false
 var target_velocity = Vector2.ZERO
 
+var prev_direction = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -72,13 +74,14 @@ func _process(delta):
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.flip_v = false
-		# See the note below about boolean assignment.
-		$AnimatedSprite2D.flip_h = velocity.x < 0
 		
+		var is_turning = velocity.x < 0
+		$AnimatedSprite2D.flip_h = is_turning
+		$Arm.flip_arm(velocity.x < 0)		
 		
 	move_and_slide()
 
-
+	
 func start(pos):
 	position = pos
 	show()

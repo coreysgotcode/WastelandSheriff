@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://b73uuol68nx8a"]
+[gd_scene load_steps=15 format=3 uid="uid://b73uuol68nx8a"]
 
-[ext_resource type="Texture2D" uid="uid://bwckjd4xd7nff" path="res://art/sheriff/sheriff_right_armed.png" id="1_kk1bu"]
+[ext_resource type="Texture2D" uid="uid://ct5f8k85n15n3" path="res://art/sheriff/sheriff_right_armless.png" id="1_uo20e"]
+[ext_resource type="PackedScene" uid="uid://davenr5c2y52d" path="res://arm.tscn" id="2_jg85s"]
 
 [sub_resource type="GDScript" id="GDScript_alp3q"]
 script/source = "extends CharacterBody2D
@@ -13,11 +14,17 @@ var screen_size # Size of the game window.
 # The player's movement vector.
 var jump_pressed = false
 var target_velocity = Vector2.ZERO
+var prev_direction = true
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	
+	
+func get_gun_position():
+	return $Arm.get_gun_position()
+
 
 func get_input(velocity: Vector2):
 	'''
@@ -77,8 +84,12 @@ func _process(delta):
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = \"walk\"
 		$AnimatedSprite2D.flip_v = false
-		# See the note below about boolean assignment.
+		
+		var is_flipped = velocity.x < 0
 		$AnimatedSprite2D.flip_h = velocity.x < 0
+		if is_flipped != prev_direction:
+			$Arm.flip_arm(is_flipped)
+			prev_direction = is_flipped
 		
 		
 	move_and_slide()
@@ -90,71 +101,71 @@ func start(pos):
 	$CollisionShape2D.disabled = false
 "
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r11ri"]
-atlas = ExtResource("1_kk1bu")
-region = Rect2(0, 0, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijlir"]
+atlas = ExtResource("1_uo20e")
+region = Rect2(0, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ggoe"]
-atlas = ExtResource("1_kk1bu")
-region = Rect2(256, 0, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmbcc"]
+atlas = ExtResource("1_uo20e")
+region = Rect2(512, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cxbma"]
-atlas = ExtResource("1_kk1bu")
-region = Rect2(512, 0, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jto2"]
+atlas = ExtResource("1_uo20e")
+region = Rect2(1024, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pywc8"]
-atlas = ExtResource("1_kk1bu")
-region = Rect2(0, 256, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pn7s"]
+atlas = ExtResource("1_uo20e")
+region = Rect2(0, 512, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aw0iq"]
-atlas = ExtResource("1_kk1bu")
-region = Rect2(256, 256, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4s21"]
+atlas = ExtResource("1_uo20e")
+region = Rect2(512, 512, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y3vfi"]
-atlas = ExtResource("1_kk1bu")
-region = Rect2(512, 256, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwr3t"]
+atlas = ExtResource("1_uo20e")
+region = Rect2(1024, 512, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f8oow"]
-atlas = ExtResource("1_kk1bu")
-region = Rect2(0, 512, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tgsf"]
+atlas = ExtResource("1_uo20e")
+region = Rect2(0, 1024, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ffb2j"]
-atlas = ExtResource("1_kk1bu")
-region = Rect2(256, 512, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yial6"]
+atlas = ExtResource("1_uo20e")
+region = Rect2(512, 1024, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_24smj"]
-atlas = ExtResource("1_kk1bu")
-region = Rect2(512, 512, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_177f0"]
+atlas = ExtResource("1_uo20e")
+region = Rect2(1024, 1024, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mu8yt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r11ri")
+"texture": SubResource("AtlasTexture_ijlir")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ggoe")
+"texture": SubResource("AtlasTexture_dmbcc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cxbma")
+"texture": SubResource("AtlasTexture_8jto2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pywc8")
+"texture": SubResource("AtlasTexture_3pn7s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aw0iq")
+"texture": SubResource("AtlasTexture_c4s21")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y3vfi")
+"texture": SubResource("AtlasTexture_bwr3t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f8oow")
+"texture": SubResource("AtlasTexture_8tgsf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ffb2j")
+"texture": SubResource("AtlasTexture_yial6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_24smj")
+"texture": SubResource("AtlasTexture_177f0")
 }],
 "loop": true,
 "name": &"walk",
@@ -162,18 +173,24 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nd08"]
-size = Vector2(40, 129)
+size = Vector2(48, 225)
 
 [node name="Sheriff" type="CharacterBody2D"]
-position = Vector2(576, 336)
+position = Vector2(562, 353)
 collision_mask = 2
 script = SubResource("GDScript_alp3q")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mu8yt")
 animation = &"walk"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, 15.5)
 shape = SubResource("RectangleShape2D_4nd08")
+metadata/_edit_lock_ = true
+
+[node name="Arm" parent="." instance=ExtResource("2_jg85s")]
+position = Vector2(32, -24)
+collision_mask = 0
+motion_mode = 1

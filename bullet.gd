@@ -4,6 +4,7 @@ extends CharacterBody2D
 var direction = Vector2.ZERO
 
 func fire_bullet(event_position):
+	look_at(get_global_mouse_position())
 	direction = (event_position - global_position).normalized()
 	
 func _process(delta):
@@ -21,6 +22,3 @@ func _physics_process(delta):
 		if collider.has_method("damage"):
 			collider.damage(self)
 			queue_free()
-
-
-

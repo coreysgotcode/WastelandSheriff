@@ -46,6 +46,7 @@ position = Vector2(600, 680)
 mesh = SubResource("BoxMesh_loh6t")
 
 [node name="Squake" parent="." instance=ExtResource("3_wu5ok")]
+position = Vector2(144, -10)
 contact_monitor = true
 
 [node name="SquakeTimer" type="Timer" parent="."]

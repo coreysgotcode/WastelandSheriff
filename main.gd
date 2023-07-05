@@ -45,6 +45,7 @@ func _on_start_timer_timeout():
 
 func game_over():
 	$SquakeTimer.stop()
+
 	
 func new_game():
 	score = 0
@@ -54,7 +55,7 @@ func new_game():
 func _input(event):
 	if event.is_action_pressed("click"):
 		var bullet = bullet_scene.instantiate()
-		bullet.position = $Sheriff.position
+		bullet.position = $Sheriff.get_gun_position()
 		add_child(bullet)
 		bullet.fire_bullet(event.position)
 
