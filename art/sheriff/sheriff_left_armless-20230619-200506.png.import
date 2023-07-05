@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck6b8wedraed4"
-path="res://.godot/imported/sheriff_jump.png-8826439d51c4a9bf062507c6a722c76e.ctex"
+uid="uid://8136g2qdr0s5"
+path="res://.godot/imported/sheriff_left_armless-20230619-200506.png-69a1f561cfb3342e0c8ddce96b7a29f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/sheriff/sheriff_jump.png"
-dest_files=["res://.godot/imported/sheriff_jump.png-8826439d51c4a9bf062507c6a722c76e.ctex"]
+source_file="res://art/sheriff/sheriff_left_armless-20230619-200506.png"
+dest_files=["res://.godot/imported/sheriff_left_armless-20230619-200506.png-69a1f561cfb3342e0c8ddce96b7a29f7.ctex"]
 
 [params]
 

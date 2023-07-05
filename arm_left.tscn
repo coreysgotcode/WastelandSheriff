@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbg3tp8cnb0ag"]
+
+[ext_resource type="Script" path="res://arm_left.gd" id="1_jh2c6"]
+[ext_resource type="Texture2D" uid="uid://bjikr5smygdc8" path="res://art/sheriff/sheriff_arm_left.png" id="2_u7kd5"]
+[ext_resource type="Texture2D" uid="uid://c7087te7sh0p5" path="res://art/sheriff/sheriff_arm.png" id="3_ybyh2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sok1h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u7kd5")
+}],
+"loop": true,
+"name": &"aim_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ybyh2")
+}],
+"loop": true,
+"name": &"aim_right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tiv7n"]
+size = Vector2(56, 16)
+
+[node name="ArmLeft" type="CharacterBody2D"]
+script = ExtResource("1_jh2c6")
+
+[node name="ArmLeftSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(80, -16)
+sprite_frames = SubResource("SpriteFrames_sok1h")
+animation = &"aim_right"
+offset = Vector2(-40, 8)
+flip_v = true
+
+[node name="ArmLeftCollision" type="CollisionShape2D" parent="."]
+position = Vector2(28, -16)
+shape = SubResource("RectangleShape2D_tiv7n")
+
+[node name="GunLeft" type="Marker2D" parent="."]
+position = Vector2(76, 0)

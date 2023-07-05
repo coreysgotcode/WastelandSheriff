@@ -1,7 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b73uuol68nx8a"]
+[gd_scene load_steps=26 format=3 uid="uid://b73uuol68nx8a"]
 
 [ext_resource type="Texture2D" uid="uid://ct5f8k85n15n3" path="res://art/sheriff/sheriff_right_armless.png" id="1_uo20e"]
+[ext_resource type="Texture2D" uid="uid://8136g2qdr0s5" path="res://art/sheriff/sheriff_left_armless-20230619-200506.png" id="1_yvyfo"]
 [ext_resource type="PackedScene" uid="uid://davenr5c2y52d" path="res://arm.tscn" id="2_jg85s"]
+[ext_resource type="PackedScene" uid="uid://dbg3tp8cnb0ag" path="res://arm_left.tscn" id="4_qoj08"]
 
 [sub_resource type="GDScript" id="GDScript_alp3q"]
 script/source = "extends CharacterBody2D
@@ -23,7 +25,15 @@ func _ready():
 	
 	
 func get_gun_position():
-	return $Arm.get_gun_position()
+	var ret = Vector2.ZERO
+	var right_arm = $Arm.get_gun_position()
+	var left_arm = $ArmLeft.get_gun_position()
+	if right_arm != null:
+		ret = right_arm
+	else:
+		ret = left_arm
+	
+	return ret
 
 
 func get_input(velocity: Vector2):
@@ -33,7 +43,7 @@ func get_input(velocity: Vector2):
 	Args:
 		velocity: Velocity Vector
 	Returns:
-		velocity
+		velocitya
 	'''
 	if Input.is_action_pressed(\"move_right\"):
 		velocity.x += 1
@@ -81,25 +91,65 @@ func _process(delta):
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 
-	if velocity.x != 0:
-		$AnimatedSprite2D.animation = \"walk\"
-		$AnimatedSprite2D.flip_v = false
-		
-		var is_flipped = velocity.x < 0
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-		if is_flipped != prev_direction:
-			$Arm.flip_arm(is_flipped)
-			prev_direction = is_flipped
+#	if velocity.x != 0:
+#		$AnimatedSprite2D.animation = \"walk_right\"
+#		$AnimatedSprite2D.flip_v = false
+#
+#		var is_flipped = velocity.x < 0
+#		$AnimatedSprite2D.flip_h = velocity.x < 0
+#		if is_flipped != prev_direction:
+#			$Arm.flip_arm(is_flipped)
+#			prev_direction = is_flipped
 		
 		
 	move_and_slide()
-
+	
+func flip_direction(direction_str):
+	$AnimatedSprite2D.animation = direction_str
+	
 
 func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+	$AnimatedSprite2D.animation = \"walk_right\"
 "
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mskf5"]
+atlas = ExtResource("1_yvyfo")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3r0p"]
+atlas = ExtResource("1_yvyfo")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g61l2"]
+atlas = ExtResource("1_yvyfo")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfut7"]
+atlas = ExtResource("1_yvyfo")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8wv2"]
+atlas = ExtResource("1_yvyfo")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m03em"]
+atlas = ExtResource("1_yvyfo")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxsmy"]
+atlas = ExtResource("1_yvyfo")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oll4h"]
+atlas = ExtResource("1_yvyfo")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdqim"]
+atlas = ExtResource("1_yvyfo")
+region = Rect2(1024, 1024, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ijlir"]
 atlas = ExtResource("1_uo20e")
@@ -141,6 +191,38 @@ region = Rect2(1024, 1024, 512, 512)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_mskf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3r0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g61l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfut7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8wv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m03em")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxsmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oll4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdqim")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ijlir")
 }, {
 "duration": 1.0,
@@ -168,7 +250,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_177f0")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"walk_right",
 "speed": 5.0
 }]
 
@@ -182,7 +264,7 @@ script = SubResource("GDScript_alp3q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mu8yt")
-animation = &"walk"
+animation = &"walk_right"
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -193,4 +275,8 @@ metadata/_edit_lock_ = true
 [node name="Arm" parent="." instance=ExtResource("2_jg85s")]
 position = Vector2(32, -24)
 collision_mask = 0
+motion_mode = 1
+
+[node name="ArmLeft" parent="." instance=ExtResource("4_qoj08")]
+position = Vector2(-33, -24)
 motion_mode = 1

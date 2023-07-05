@@ -1,16 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://davenr5c2y52d"]
+[gd_scene load_steps=6 format=3 uid="uid://davenr5c2y52d"]
 
 [ext_resource type="Script" path="res://arm.gd" id="1_744kg"]
 [ext_resource type="Texture2D" uid="uid://c7087te7sh0p5" path="res://art/sheriff/sheriff_arm.png" id="1_lpa37"]
+[ext_resource type="Texture2D" uid="uid://bjikr5smygdc8" path="res://art/sheriff/sheriff_arm_left.png" id="2_fnp5v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sok1h"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_fnp5v")
+}],
+"loop": true,
+"name": &"aim_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_lpa37")
 }],
 "loop": true,
-"name": &"aim",
+"name": &"aim_right",
 "speed": 5.0
 }]
 
@@ -19,14 +28,13 @@ size = Vector2(56, 16)
 
 [node name="Arm" type="CharacterBody2D"]
 script = ExtResource("1_744kg")
-metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="ArmSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sok1h")
-animation = &"aim"
+animation = &"aim_right"
 offset = Vector2(40, 8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="ArmCollision" type="CollisionShape2D" parent="."]
 position = Vector2(28, 16)
 shape = SubResource("RectangleShape2D_tiv7n")
 

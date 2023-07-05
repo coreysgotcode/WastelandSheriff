@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwckjd4xd7nff"
-path="res://.godot/imported/sheriff_right_armed.png-d010f8d88e11563cfe875c04adc0a8f7.ctex"
+uid="uid://bjikr5smygdc8"
+path="res://.godot/imported/sheriff_arm_left.png-91a9f64feded20af0d6c86a511ace479.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/sheriff/sheriff_right_armed.png"
-dest_files=["res://.godot/imported/sheriff_right_armed.png-d010f8d88e11563cfe875c04adc0a8f7.ctex"]
+source_file="res://art/sheriff/sheriff_arm_left.png"
+dest_files=["res://.godot/imported/sheriff_arm_left.png-91a9f64feded20af0d6c86a511ace479.ctex"]
 
 [params]
 
