@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://b73uuol68nx8a"]
 
-[ext_resource type="Texture2D" path="res://art/sheriff/sheriff_right_armless.png" id="1_uo20e"]
+[ext_resource type="Texture2D" uid="uid://ct5f8k85n15n3" path="res://art/sheriff/sheriff_right_armless.png" id="1_uo20e"]
 [ext_resource type="PackedScene" uid="uid://davenr5c2y52d" path="res://arm.tscn" id="2_jg85s"]
 
 [sub_resource type="GDScript" id="GDScript_alp3q"]
@@ -24,9 +24,7 @@ func _ready():
 	
 func get_gun_position():
 	return $Arm.get_gun_position()
-	
-func get_gun_rotation():
-	return $Arm.get_gun_rotation()
+
 
 func get_input(velocity: Vector2):
 	'''

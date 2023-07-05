@@ -1,18 +1,13 @@
 extends CharacterBody2D
-
+var _mouse_position = Vector2.ZERO
 
 func get_gun_position():
-	var tmp_pos = global_position
-	tmp_pos.x = tmp_pos.x + 75
-	return tmp_pos
+	return $Gun.global_position
 	
-func get_gun_rotation():
-	return global_rotation
-	
-
 func get_input():
-	look_at(get_global_mouse_position())
-
+	_mouse_position = get_global_mouse_position()
+	look_at(_mouse_position)
+	
 func flip_arm(flip_h):
 	# See the note below about boolean assignment.
 	if flip_h:
@@ -22,7 +17,5 @@ func flip_arm(flip_h):
 
 func _physics_process(delta):
 	get_input()
-	
 
-	
 	

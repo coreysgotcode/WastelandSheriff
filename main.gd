@@ -56,7 +56,6 @@ func _input(event):
 	if event.is_action_pressed("click"):
 		var bullet = bullet_scene.instantiate()
 		bullet.position = $Sheriff.get_gun_position()
-		bullet.rotation = $Sheriff.get_gun_rotation()
 		add_child(bullet)
 		bullet.fire_bullet(event.position)
 
