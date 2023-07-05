@@ -72,12 +72,12 @@ func _process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 
 	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "walk"
+		$AnimatedSprite2D.animation = "walk_right"
 		$AnimatedSprite2D.flip_v = false
 		
 		var is_turning = velocity.x < 0
 		$AnimatedSprite2D.flip_h = is_turning
-		$Arm.flip_arm(velocity.x < 0)		
+		$Arm.flip_arm(is_turning)		
 		
 	move_and_slide()
 
