@@ -17,5 +17,3 @@ func flip_arm(flip_h):
 
 func _physics_process(delta):
 	get_input()
-
-	
